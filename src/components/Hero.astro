@@ -1,0 +1,15 @@
+---
+import { CONTACT } from '../lib/constants';
+---
+
+<section class="section-padding min-h-[80vh] flex items-center">
+  <div class="container-main text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-6 font-mono">{{HERO_BADGE}}</div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6">{{HERO_LINE_1}}<span class="text-primary">{{HERO_LINE_2}}</span></h1>
+    <p class="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-8">{{HERO_SUB}}</p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="/orcamento/" class="btn-primary text-lg !px-10 !py-4">Solicite um Orcamento</a>
+      <a href={`${CONTACT.whatsappLink}?text=${encodeURIComponent('Ola! Gostaria de saber mais sobre os servicos.')}`} target="_blank" rel="noopener noreferrer" class="btn-secondary text-lg !px-10 !py-4">Fale Conosco</a>
+    </div>
+  </div>
+</section>
