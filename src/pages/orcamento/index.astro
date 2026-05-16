@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../lib/constants';
+import { generateTitle } from '../../lib/seo';
+
+const title = generateTitle('Orcamento');
+---
+
+<Layout title={title}>
+  <section class="section-padding">
+    <div class="container-main max-w-2xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Solicite um Orcamento</h1>
+      <p class="text-white/70 mb-8">{{FORM_DESCRIPTION}}</p>
+      <form class="space-y-6" action="/orcamento/obrigado/" method="POST">
+        <div><label class="block text-sm font-medium mb-2">Nome</label><input type="text" name="name" required class="w-full px-4 py-3 bg-dark-light border border-white/10 rounded-lg text-white focus:border-primary focus:outline-none" /></div>
+        <div><label class="block text-sm font-medium mb-2">Email</label><input type="email" name="email" required class="w-full px-4 py-3 bg-dark-light border border-white/10 rounded-lg text-white focus:border-primary focus:outline-none" /></div>
+        <div><label class="block text-sm font-medium mb-2">Telefone / WhatsApp</label><input type="tel" name="phone" class="w-full px-4 py-3 bg-dark-light border border-white/10 rounded-lg text-white focus:border-primary focus:outline-none" /></div>
+        <div><label class="block text-sm font-medium mb-2">Servico de Interesse</label><select name="service" class="w-full px-4 py-3 bg-dark-light border border-white/10 rounded-lg text-white focus:border-primary focus:outline-none"><option value="">Selecione...</option>{{SERVICE_OPTIONS}}</select></div>
+        <div><label class="block text-sm font-medium mb-2">Mensagem</label><textarea name="message" rows="4" class="w-full px-4 py-3 bg-dark-light border border-white/10 rounded-lg text-white focus:border-primary focus:outline-none"></textarea></div>
+        <button type="submit" class="btn-primary w-full">Enviar</button>
+      </form>
+    </div>
+  </section>
+</Layout>
