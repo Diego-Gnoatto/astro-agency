@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE, CONTACT, COMPANY, SERVICES, PROCESS_STEPS, FAQ } from '../lib/constants';
+import { generateTitle, generateOrgSchema, generateFAQSchema } from '../lib/seo';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Process from '../components/Process.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQSection from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+
+const title = generateTitle('{{HOMEPAGE_TITLE}}');
+---
+
+<Layout title={title} schema={generateOrgSchema()}>
+  <Hero />
+  <Services />
+  <Process />
+  <Pricing />
+  <FAQSection />
+  <Contact />
+</Layout>
