@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: {{PRIMARY_COLOR}};
+  --color-primary-dark: {{PRIMARY_DARK_COLOR}};
+  --color-accent: {{ACCENT_COLOR}};
+  --color-dark: #0F172A;
+  --color-dark-light: #1E293B;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-dark text-white antialiased; }
+}
+
+@layer components {
+  .container-main { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-padding { @apply py-20 md:py-28; }
+  .btn-primary { @apply inline-flex items-center justify-center px-8 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-primary/20; }
+  .btn-secondary { @apply inline-flex items-center justify-center px-8 py-3 border border-white/20 text-white font-semibold rounded-full transition-all duration-300 hover:bg-white/10; }
+}
