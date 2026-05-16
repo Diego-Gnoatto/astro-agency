@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE, CONTACT } from '../../lib/constants';
+import { generateTitle } from '../../lib/seo';
+
+const title = generateTitle('Obrigado');
+---
+
+<Layout title={title}>
+  <section class="section-padding text-center">
+    <div class="container-main max-w-2xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Obrigado!</h1>
+      <p class="text-white/70 mb-8">Recebemos sua mensagem. Entraremos em contato em breve.</p>
+      <a href="/" class="btn-primary">Voltar ao Inicio</a>
+    </div>
+  </section>
+</Layout>
