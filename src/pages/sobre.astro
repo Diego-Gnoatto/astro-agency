@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE, COMPANY, CONTACT } from '../lib/constants';
+import { generateTitle } from '../lib/seo';
+
+const title = generateTitle('Sobre');
+---
+
+<Layout title={title}>
+  <section class="section-padding">
+    <div class="container-main max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Sobre a {SITE.name}</h1>
+      <div class="space-y-4 text-white/70 leading-relaxed">
+        <p>{{ABOUT_TEXT_1}}</p>
+        <p>{{ABOUT_TEXT_2}}</p>
+        <p>{{ABOUT_TEXT_3}}</p>
+      </div>
+      <div class="mt-8">
+        <a href="/orcamento/" class="btn-primary">Solicite um Orcamento</a>
+      </div>
+    </div>
+  </section>
+</Layout>
