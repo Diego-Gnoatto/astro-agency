@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import { SITE, CONTACT, COMPANY } from '../lib/constants';
+import { generateTitle, generateDescription, generateOrgSchema } from '../lib/seo';
+
+const {
+  title = generateTitle('{{TAGLINE}}'),
+  description = COMPANY.description,
+  image = '/og-image.png',
+  schema,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, SITE.url);
+const schemaData = schema || generateOrgSchema();
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={generateDescription(description)} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={generateDescription(description)} />
+  <meta property="og:image" content={new URL(image, SITE.url).href} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={generateDescription(description)} />
+  <meta name="twitter:image" content={new URL(image, SITE.url).href} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} is:inline />
+</head>
+<body class="bg-dark text-white antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-lg border-b border-white/10">
+    <div class="container-main">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="/" class="flex items-center gap-2">
+          <span class="font-mono text-lg font-bold text-primary">{{LOGO_TEXT}}</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/#servicos" class="text-sm font-medium hover:text-primary transition-colors">Servicos</a>
+          <a href="/#processo" class="text-sm font-medium hover:text-primary transition-colors">Processo</a>
+          <a href="/#sobre" class="text-sm font-medium hover:text-primary transition-colors">Sobre</a>
+          <a href="/orcamento/" class="btn-primary text-sm !px-5 !py-2">Orcamento</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="pt-20"><slot /></main>
+  <footer class="bg-dark-light border-t border-white/10 py-12">
+    <div class="container-main">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-white/40">&copy; {new Date().getFullYear()} {SITE.name}.</p>
+        <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-primary text-sm">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
